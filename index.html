@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LGCY × Ondo — KOL Shortlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0e0e0f; --bg2:#141416; --card:#161618; --card2:#1b1b1e;
+    --line:#242427; --line2:#312f33;
+    --txt:#f4f2ec; --mut:#9b988e; --mut2:#615f58;
+    --green:#3ea27a; --green-deep:#14543d;
+    --purple:#8c64b0; --bronze:#c38a68; --coral:#f36c71; --gold:#e0b24d;
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1100px 620px at 88% -8%, #14543d22, transparent 60%),
+      radial-gradient(820px 520px at -5% 4%, #8c64b018, transparent 55%),
+      var(--bg);
+    color:var(--txt); font-family:'Hanken Grotesk',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; padding:46px 22px 64px; line-height:1.45;
+  }
+  .wrap{max-width:1140px;margin:0 auto}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap}
+  .eyebrow{font-size:11.5px;letter-spacing:.34em;color:var(--mut);text-transform:uppercase;font-weight:600}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,6vw,60px);
+     letter-spacing:-.015em;line-height:1.0;margin:14px 0 0}
+  h1 .x{color:var(--mut2);font-weight:400;margin:0 .12em;font-size:.8em}
+  h1 .o{font-style:italic;color:var(--green)}
+  .rule{width:64px;height:2px;background:var(--green);margin:22px 0 16px;border-radius:2px}
+  .sub{color:var(--mut);font-size:15px;max-width:580px;line-height:1.55}
+  .stamp{text-align:right;color:var(--mut2);font-size:12px;line-height:1.85;white-space:nowrap;padding-top:6px}
+  .stamp b{color:var(--mut);font-weight:500}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:34px 0 26px;
+    background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .stat{background:var(--card);padding:20px 20px 17px}
+  .stat .v{font-family:'Fraunces',serif;font-weight:500;font-size:30px;letter-spacing:-.01em}
+  .stat .v.g{color:var(--green)} .stat .v.gold{color:var(--gold)}
+  .stat .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.13em;margin-top:6px}
+
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+  .search{flex:1;min-width:220px;position:relative}
+  .search input{width:100%;background:var(--card);border:1px solid var(--line2);border-radius:11px;color:var(--txt);
+    font-family:inherit;font-size:14px;padding:11px 14px 11px 38px;outline:none}
+  .search input::placeholder{color:var(--mut2)}
+  .search input:focus{border-color:var(--green)}
+  .search svg{position:absolute;left:13px;top:12px;opacity:.45}
+  select{background:var(--card);border:1px solid var(--line2);border-radius:11px;color:var(--txt);
+    font-family:inherit;font-size:13.5px;padding:11px 32px 11px 13px;outline:none;cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239b988e' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 11px center}
+  select:focus{border-color:var(--green)}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  thead th{text-align:left;color:var(--mut);font-weight:600;font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+    padding:12px 14px;border-bottom:1px solid var(--line2);cursor:pointer;user-select:none;white-space:nowrap}
+  thead th.sortable:hover{color:var(--txt)}
+  thead th .ar{opacity:.3;font-size:9px;margin-left:4px}
+  thead th.act{color:var(--txt)} thead th.act .ar{opacity:1;color:var(--green)}
+  thead th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  tbody tr{border-bottom:1px solid var(--line);transition:background .12s}
+  tbody tr:hover{background:#ffffff05}
+  td{padding:14px;vertical-align:middle}
+  .who{display:flex;align-items:center;gap:13px;min-width:210px}
+  .av{width:40px;height:40px;border-radius:11px;flex:none;display:grid;place-items:center;
+    font-family:'Fraunces',serif;font-weight:500;font-size:15px}
+  .nm{font-weight:600;font-size:14.5px;letter-spacing:-.005em}
+  .tag{display:inline-block;font-size:11px;color:var(--mut);background:var(--bg2);border:1px solid var(--line2);
+    border-radius:6px;padding:3px 8px;margin-top:4px}
+  .plat{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.05em;border-radius:6px;
+    padding:4px 8px;text-transform:uppercase;color:var(--mut);background:var(--bg2);border:1px solid var(--line2)}
+  .big{font-family:'Fraunces',serif;font-weight:500;font-size:17px;letter-spacing:-.01em}
+  .est{color:var(--mut2);font-size:10.5px;margin-top:2px;max-width:150px;line-height:1.3}
+  .links{display:flex;gap:7px;justify-content:flex-end}
+  .lk{width:31px;height:31px;border-radius:8px;display:grid;place-items:center;background:var(--card2);
+    border:1px solid var(--line2);color:var(--mut);text-decoration:none;font-weight:600;font-size:10.5px;transition:.12s}
+  .lk:hover{transform:translateY(-1px);border-color:var(--green);color:var(--green)}
+  .foot{color:var(--mut2);font-size:12px;margin-top:30px;line-height:1.75;border-top:1px solid var(--line);padding-top:18px}
+  .foot b{color:var(--mut);font-weight:600}
+  .foot .g{color:var(--green)}
+  .empty{text-align:center;color:var(--mut);padding:46px}
+  @media(max-width:820px){
+    body{padding:30px 15px 50px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stamp{text-align:left;padding-top:14px}
+    thead th.hide,td.hide{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="eyebrow">LGCY · Creator-Ops</div>
+      <h1>LGCY<span class="x">×</span><span class="o">Ondo</span></h1>
+      <div class="rule"></div>
+      <p class="sub">Shortlist de creators BR de cripto para o public launch. <b style="color:var(--txt);font-weight:600">Alcance</b> = mediana de views/plays dos posts recentes na plataforma primária — sinal real de entrega, não número de seguidores.</p>
+    </div>
+    <div class="stamp">
+      <div><b>26</b> creators · BR</div>
+      <div>seguidores · dez/2025</div>
+      <div>alcance · live 2026-05-29</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v">26</div><div class="l">Creators</div></div>
+    <div class="stat"><div class="v g">3.5M</div><div class="l">Seguidores somados</div></div>
+    <div class="stat"><div class="v gold">254k</div><div class="l">Alcance somado / post</div></div>
+    <div class="stat"><div class="v">10k</div><div class="l">Alcance médio</div></div>
+  </div>
+
+  <div class="bar">
+    <label class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" placeholder="Buscar creator ou nicho…" autocomplete="off">
+    </label>
+    <select id="niche"><option value="">Todos os nichos</option></select>
+    <select id="plat">
+      <option value="">Todas as plataformas</option>
+      <option value="youtube">YouTube</option>
+      <option value="instagram">Instagram</option>
+      <option value="kick">Kick / Twitch</option>
+    </select>
+    <select id="sort">
+      <option value="reach">Ordenar · Alcance</option>
+      <option value="followers">Ordenar · Seguidores</option>
+      <option value="name">Ordenar · Nome (A–Z)</option>
+    </select>
+  </div>
+
+  <table>
+    <thead><tr>
+      <th class="sortable" data-k="name">Creator</th>
+      <th class="hide">Plataforma</th>
+      <th class="num sortable" data-k="followers">Seguidores</th>
+      <th class="num sortable act" data-k="reach">Alcance / post <span class="ar">▼</span></th>
+      <th class="num">Perfis</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div id="empty" class="empty" style="display:none">Nenhum creator encontrado.</div>
+
+  <div class="foot">
+    <b>Metodologia.</b> Seguidores = base interna LGCY (dez/2025). <span class="g">Alcance</span> = mediana de views/plays dos ~8–12 posts/vídeos recentes na plataforma primária de cada creator — proxy público de reach (reach de impressões é privado do creator). Itens com nota <span class="est" style="display:inline">est.</span> são estimados ou medidos em plataforma secundária.<br>
+    Preparado por <b>LGCY</b> · 2026-05-29 · uso interno + cliente · não indexado.
+  </div>
+</div>
+
+<script>
+const DATA = [{"name": "Primo do Satoshi", "niche": "Cripto", "followers": 88000, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/primodosatoshi/"}, "reach": 47388}, {"name": "Elidio Blindado", "niche": "Cripto", "followers": 149000, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/elidiosegundo/"}, "reach": 42181}, {"name": "Criptomaniacos", "niche": "Cripto/Economia", "followers": 416000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@CRIPTOMANIACOS", "instagram": "https://www.instagram.com/criptomaniacosoficial/", "twitter": "https://x.com/Criptomaniacos_"}, "reach": 29930}, {"name": "Jonata Ribas", "niche": "Geopolítica/News/Web3", "followers": 680000, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/jonataribas/", "youtube": "https://www.youtube.com/c/JonataRibas", "tiktok": "https://www.tiktok.com/@jonataribas"}, "reach": 24231}, {"name": "Paula Srok", "niche": "Cripto", "followers": 11000, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/paulascrok/"}, "reach": 20000, "reach_note": "mediana típica (exclui virais 200k+)"}, {"name": "Lucas Amendola", "niche": "Investimentos/Cripto", "followers": 380000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@investidor4.20", "instagram": "https://www.instagram.com/lucas.amendolaa/", "twitter": "https://x.com/investidor420"}, "reach": 16934}, {"name": "Criptopepememe", "niche": "Cripto/Memes", "followers": 69300, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/criptopepememes/", "twitter": "https://x.com/criptopepememes"}, "reach": 15216}, {"name": "Gabriel Della", "niche": "Cripto", "followers": 84200, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/criptobrasilofc/", "youtube": "https://www.youtube.com/@gabrieldellacripto"}, "reach": 8815}, {"name": "Luisa Pires", "niche": "Trading/Cripto", "followers": 63300, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/luisapires_/", "youtube": "https://www.youtube.com/@luisapirescrypto"}, "reach": 7692}, {"name": "Douglas Tadeu", "niche": "Cripto", "followers": 94000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@dougtadeu", "instagram": "https://www.instagram.com/dougtadeu/"}, "reach": 6760}, {"name": "Jader Nogueira", "niche": "Trader/Altcoins (Forbes U40)", "followers": 413000, "followers_note": "estimativa (dossiê, não medido)", "primary": "instagram", "links": {"instagram": "https://www.instagram.com/ojadernogueira/", "youtube": "https://www.youtube.com/@JaderNogueiraa"}, "reach": 5675}, {"name": "Thutski (Arthur)", "niche": "Cripto/Tech/News", "followers": 74400, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/thutski/", "twitter": "https://x.com/thutski", "tiktok": "https://www.tiktok.com/@thutski"}, "reach": 4766}, {"name": "Diguinoct", "niche": "Trading degen (Comunidade Alpha)", "followers": 44100, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@diguionct", "instagram": "https://www.instagram.com/diguionct/"}, "reach": 3979}, {"name": "Joao Hazim", "niche": "Cripto", "followers": 46000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@joaohazim"}, "reach": 3638}, {"name": "Iara Thamires", "niche": "Trading/DeFi", "followers": 82200, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/iaraconsorcio/", "youtube": "https://www.youtube.com/@iara_thamires"}, "reach": 3611}, {"name": "Victor Alfa", "niche": "Builder", "followers": 5000, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/victor__alfa/", "twitter": "https://x.com/victor__alfa"}, "reach": 2760, "reach_note": "estimado (poucos reels)"}, {"name": "Ramon Cunha", "niche": "Cripto/Airdrops/DeFi", "followers": 72000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@Ramon_Cunha", "instagram": "https://www.instagram.com/ramon_cunha/", "twitter": "https://x.com/euramoncunha"}, "reach": 2237}, {"name": "Soneca", "niche": "Cripto/DeFi/GameFi", "followers": 35400, "followers_note": "migrou Twitch(175k)→Kick; verificar", "primary": "kick", "links": {"kick": "https://kick.com/sonecarox", "instagram": "https://www.instagram.com/sonecaroxx/", "youtube": "https://www.youtube.com/sonecarox", "twitter": "https://x.com/sonecarox"}, "reach": 1801, "reach_note": "YouTube · Kick é primário"}, {"name": "Rodrigo Moura", "niche": "Cripto/Airdrops", "followers": 76000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@rodrigomouracrypto", "twitter": "https://x.com/rodrigomcrypto"}, "reach": 1746}, {"name": "Andre Franco", "niche": "Cripto/Research", "followers": 310000, "primary": "instagram", "links": {"instagram": "https://www.instagram.com/cryptoandrefranco/", "youtube": "https://www.youtube.com/@boostresearch"}, "reach": 1205, "reach_note": "formato carrossel (poucos reels)"}, {"name": "Rafael Castaneda", "niche": "KOL/Community/Builder", "followers": 30500, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@castacrypto", "instagram": "https://www.instagram.com/castacrypto/", "twitter": "https://x.com/castacrypto"}, "reach": 789}, {"name": "Matheus Kelvin", "niche": "Cripto", "followers": 19000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@mkcripto", "instagram": "https://www.instagram.com/matheuskelvincripto/"}, "reach": 523}, {"name": "Miguel Surfista Cripto", "niche": "Cripto", "followers": 9800, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@surfistacrypto"}, "reach": 428}, {"name": "Vinicius Bitnoob", "niche": "Cripto/GameFi", "followers": 67700, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@BitNoob", "instagram": "https://www.instagram.com/viniciusbitnoob/", "tiktok": "https://www.tiktok.com/@viniciusbitnoob"}, "reach": 420}, {"name": "Caio Vicentino", "niche": "Cripto/Investimentos", "followers": 122000, "primary": "youtube", "links": {"youtube": "https://www.youtube.com/@caiovicentino", "instagram": "https://www.instagram.com/caiovicentino/", "twitter": "https://x.com/caiovicentino"}, "reach": 410}, {"name": "Nenesk", "niche": "GameFi/Tech", "followers": 58900, "followers_note": "base early-25: 151.5k (YT+IG)", "primary": "youtube", "links": {"youtube": "https://www.youtube.com/channel/UCFKRgcFCioUkbqcsNwXYE6w", "instagram": "https://www.instagram.com/gustavonenesk/"}, "reach": 377}];
+// Ondo multi-hue palette (purple, green, bronze, coral, gold)
+const ONDO = ['#8c64b0','#3ea27a','#c38a68','#f36c71','#e0b24d'];
+const nicheColor = {}; let ci = 0;
+function colorFor(niche){
+  if(!(niche in nicheColor)){ nicheColor[niche]=ONDO[ci%ONDO.length]; ci++; }
+  return nicheColor[niche];
+}
+function hx(h){h=h.replace('#','');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function rgba(h,a){const[r,g,b]=hx(h);return `rgba(${r},${g},${b},${a})`;}
+function human(n){
+  if(n==null) return "—";
+  if(n>=1e6) return (n/1e6).toFixed(1).replace(/\.0$/,'')+"M";
+  if(n>=1e3) return Math.round(n/1e3)+"k";
+  return ""+n;
+}
+const PLABEL = {youtube:'YouTube', instagram:'Instagram', kick:'Kick', tiktok:'TikTok'};
+const LK = [['youtube','YT'],['instagram','IG'],['tiktok','TT'],['twitter','X'],['twitch','TW'],['kick','K']];
+function initials(name){
+  return name.replace(/[^A-Za-zÀ-ÿ0-9 ].*/,'').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+}
+const q=document.getElementById('q'), nicheSel=document.getElementById('niche'),
+      platSel=document.getElementById('plat'), sortSel=document.getElementById('sort'),
+      rows=document.getElementById('rows'), empty=document.getElementById('empty');
+
+[...new Set(DATA.map(d=>d.niche))].sort().forEach(nm=>{
+  const o=document.createElement('option'); o.value=nm; o.textContent=nm; nicheSel.appendChild(o);
+});
+
+let sortKey='reach', sortDir=-1;
+function render(){
+  const term=q.value.toLowerCase(), nf=nicheSel.value, pf=platSel.value;
+  let list=DATA.filter(d=>
+    (!term || d.name.toLowerCase().includes(term) || d.niche.toLowerCase().includes(term)) &&
+    (!nf || d.niche===nf) &&
+    (!pf || d.primary===pf || (pf==='kick'&&['kick','twitch'].includes(d.primary)))
+  );
+  list.sort((a,b)=>{
+    if(sortKey==='name') return a.name.localeCompare(b.name)*sortDir;
+    return ((a[sortKey]??-1)-(b[sortKey]??-1))*sortDir;
+  });
+  rows.innerHTML='';
+  empty.style.display=list.length?'none':'block';
+  for(const d of list){
+    const col=colorFor(d.niche);
+    const links=LK.filter(([k])=>d.links&&d.links[k]).map(([k,lab])=>
+      `<a class="lk" href="${d.links[k]}" target="_blank" rel="noopener" title="${k}">${lab}</a>`).join('');
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><div class="who">
+        <div class="av" style="background:${rgba(col,0.15)};border:1px solid ${rgba(col,0.4)};color:${col}">${initials(d.name)}</div>
+        <div><div class="nm">${d.name}</div><span class="tag">${d.niche}</span></div>
+      </div></td>
+      <td class="hide"><span class="plat">${PLABEL[d.primary]||d.primary}</span></td>
+      <td class="num"><span class="big">${human(d.followers)}</span>${d.followers_note?'<div class="est">'+d.followers_note+'</div>':''}</td>
+      <td class="num"><span class="big">${human(d.reach)}</span>${d.reach_note?'<div class="est">'+d.reach_note+'</div>':''}</td>
+      <td><div class="links">${links}</div></td>`;
+    rows.appendChild(tr);
+  }
+}
+document.querySelectorAll('th.sortable').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.k;
+  if(sortKey===k) sortDir*=-1; else { sortKey=k; sortDir=(k==='name')?1:-1; }
+  document.querySelectorAll('th.sortable').forEach(x=>{x.classList.remove('act');const a=x.querySelector('.ar');if(a)a.remove();});
+  th.classList.add('act'); const ar=document.createElement('span');ar.className='ar';ar.textContent=sortDir<0?'▼':'▲';th.appendChild(ar);
+  sortSel.value=k; render();
+}));
+sortSel.addEventListener('change',()=>{sortKey=sortSel.value;sortDir=(sortKey==='name')?1:-1;render();});
+[q,nicheSel,platSel].forEach(el=>el.addEventListener('input',render));
+render();
+</script>
+</body>
+</html>
